@@ -14,8 +14,8 @@ func main() {
 		dateString = os.Args[1]
 	} else {
 		d := time.Now()
-		afterTen := d.Add(-time.Hour * 10)
-		dateString = afterTen.Format(time.RFC850)
+		tenHoursAgo := d.Add(-time.Hour * 10)
+		dateString = tenHoursAgo.Format(time.RFC850)
 		fmt.Println("RFC850 format:", dateString)
 		dateString = d.Format(time.RFC1123Z)
 		fmt.Println("RFC1123Z format:", dateString)
@@ -24,7 +24,7 @@ func main() {
 		loc, err := time.LoadLocation("Europe/London")
 		if err == nil {
 			fmt.Println(loc)
-			dateString = afterTen.In(loc).Format(time.RFC3339)
+			dateString = tenHoursAgo.In(loc).Format(time.RFC3339)
 			fmt.Println("Ten hours ago in London:", dateString)
 		}
 
