@@ -16,17 +16,23 @@ func main() {
 		d := time.Now()
 		afterTen := d.Add(-time.Hour * 10)
 		dateString = afterTen.Format(time.RFC850)
-		fmt.Println(dateString)
+		fmt.Println("RFC850 format:", dateString)
 		dateString = d.Format(time.RFC1123Z)
-		fmt.Println(dateString)
+		fmt.Println("RFC1123Z format:", dateString)
 		dateString = d.Format(time.RFC3339)
-		fmt.Println(dateString)
+		fmt.Println("RFC3339 format:", dateString)
 		loc, err := time.LoadLocation("Europe/London")
 		if err == nil {
 			fmt.Println(loc)
 			dateString = afterTen.In(loc).Format(time.RFC3339)
-			fmt.Println(dateString)
+			fmt.Println("Ten hours ago in London:", dateString)
 		}
+
+		// RFC850 format: Wednesday, 25-Aug-21 01:36:38 IDT
+		// RFC1123Z format: Wed, 25 Aug 2021 11:36:38 +0300
+		// RFC3339 format: 2021-08-25T11:36:38+03:00
+		// Europe/London
+		// Ten hours ago in London: 2021-08-24T23:36:38+01:00
 		return
 	}
 
